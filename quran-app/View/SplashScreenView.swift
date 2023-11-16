@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SplashScreenView: View {
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack{
                 Spacer()
                 VStack(spacing:16){
@@ -40,14 +41,13 @@ struct SplashScreenView: View {
                         .cornerRadius(30)
                 }
                 
-                
-
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(CustomColor.DarkPurple)
 
         }
+        
     }
 }
 
@@ -56,6 +56,7 @@ struct CustomColor{
     static let LigthPurple = Color("LightPurple")
     static let LigthOrange = Color("LightOrange")
     static let BasicPurple = Color("BasicPurple")
+    static let MediumPurple = Color("MediumPurple")
 }
 
 struct SplashScreenView_Previews: PreviewProvider {

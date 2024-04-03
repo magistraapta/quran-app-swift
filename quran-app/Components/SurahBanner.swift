@@ -8,20 +8,28 @@
 import SwiftUI
 
 struct SurahBanner: View {
+    @State var surahName = "Al-Fatiha"
+    @State var surahNameIndo = "Pembukaan"
+    @State var verses = 7
+    @State var place = "Mecca"
     var body: some View {
         ZStack{
             Image("surah-bg")
             VStack(spacing: 32){
                 VStack(spacing:8){
-                    Text("Al-Fatiha")
+                    Text(surahName)
                         .font(.system(size: 26))
                         .fontWeight(.bold)
-                    Text("The Opening")
+                    Text(surahNameIndo)
                     
                     Divider()
                         .frame(maxWidth: 200)
                         .overlay(.white)
-                    Text("Mecca - 7 Verses")
+                    HStack{
+                        Text(place)
+                        Text("\(verses) - verses")
+                    }
+                    
                 }
                 
                 Image("bismillah")

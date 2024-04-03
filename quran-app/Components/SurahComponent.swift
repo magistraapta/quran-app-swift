@@ -10,6 +10,9 @@ import SwiftUI
 struct SurahComponent: View {
     @State var name = ""
     @State var number = 1
+    @State var place = "Makkah"
+    @State var verses = 7
+    @State var nameInArab = "ةحتافلا"
     var body: some View {
         HStack{
             ZStack{
@@ -24,11 +27,15 @@ struct SurahComponent: View {
             VStack(alignment: .leading, spacing: 4){
                 Text("\(name)")
                     .foregroundColor(.white)
-                Text("Meccan - 7 Verses")
-                    .foregroundColor(CustomColor.LigthPurple)
+                HStack {
+                    Text(place)
+                    Text("\(verses) Verses")
+
+                }
+                .foregroundColor(CustomColor.LigthPurple)
             }
             Spacer()
-            Text("ةحتافلا")
+            Text(nameInArab)
                 .fontWeight(.bold)
                 .foregroundColor(CustomColor.BasicPurple)
         }

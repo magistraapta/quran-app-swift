@@ -8,38 +8,35 @@
 import SwiftUI
 
 struct DetailSurahView: View {
-    let ayahs = [
-        Ayahs(number: 1),
-        Ayahs(number: 2),
-        Ayahs(number: 3)
-    ]
+    @State var surahNumber: Int
+    @ObservedObject var surahVM = SurahViewModel()
     var body: some View {
         VStack{
-            ScrollView{
-                VStack(spacing:32){
-                    SurahBanner()
-                    
-                    ForEach(ayahs, id:\.self){item in
-                        
-                        AyahsComponent(number: "\(item.number)")
-
+            ScrollView {
+                ForEach(surahVM.detailSurah){item in
+                    AyahsComponent(number: "\(item.id)", surah: item.ar, surahInIndo: item.idn)
+                }
+            }
+            .onAppear{
+                Task {
+                    do {
+                        try await surahVM.getDetailSurah(number: surahNumber)
+                    } catch {
+                        print(error)
                     }
                 }
-                
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .frame(maxWidth: .infinity)
         .background(CustomColor.DarkPurple)
     }
 }
 
-struct Ayahs:Hashable{
-    var number: Int
-}
+
 
 
 struct DetailSurahView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailSurahView()
+        DetailSurahView(surahNumber: 4)
     }
 }

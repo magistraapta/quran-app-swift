@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AyahsComponent: View {
     @State var number = "1"
+    @State var surah = "بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ"
+    @State var surahInIndo = "Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."
     var body: some View {
         VStack(spacing:24){
             HStack{
@@ -29,10 +31,10 @@ struct AyahsComponent: View {
             .cornerRadius(10)
             
             VStack(alignment:.trailing, spacing: 16){
-                Text("َﻦﻳِمَلٰعْلا ِّبَر ِهَّلِل ُدْمَحْلا")
+                Text(surah)
                     .foregroundColor(CustomColor.BasicPurple)
                     .bold()
-                Text("[All] praise is [due] to Allah, Lord of the worlds -")
+                Text(surahInIndo)
                     .foregroundColor(.white)
             }
         }

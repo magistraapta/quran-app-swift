@@ -6,24 +6,21 @@
 //
 
 import Foundation
-struct DataSurah: Decodable{
-    var number: Int
-    var name: String
-    var englishName:String
-    var englishNameTranslation: String
-    var revelationType: String
-    struct Ayahs:Decodable{
-        var number: Int
-        var text: String
-        var numberInSurah: Int
-        var juz: Int
-        var manzil: Int
-        var page: Int
-        var ruku: Int
-        var hizbQuarter: Int
-        var sajda: Bool
+struct SurahModel: Codable, Identifiable {
+    let id = UUID()
+    let nomor: Int
+    let nama, namaLatin: String
+    let jumlahAyat: Int
+    let tempatTurun, deskripsi: String
+    let audio: String
+
+    enum CodingKeys: String, CodingKey {
+        case nomor, nama
+        case namaLatin = "nama_latin"
+        case jumlahAyat = "jumlah_ayat"
+        case tempatTurun = "tempat_turun"
+        case deskripsi, audio
     }
 }
-
 
 

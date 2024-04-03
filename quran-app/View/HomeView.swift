@@ -12,8 +12,8 @@ struct Surah: Hashable{
     var title: String
 }
 struct HomeView: View {
-    var dataSurah = [Surah(number: 1, title: "Al-Fatiha"), Surah(number: 2, title: "Al-Baqara"), Surah(number: 3, title: "Al-Ikhlas")]
-    var body: some View {
+    @ObservedObject var surahVM = SurahViewModel()
+        var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing:24){
                 VStack(alignment: .leading, spacing: 24){
@@ -21,22 +21,31 @@ struct HomeView: View {
                     Content()
                 }
                 
-                ForEach(dataSurah, id:\.self){ surah in
-                    NavigationLink {
-                        DetailSurahView()
-                    } label: {
-                        SurahComponent(name: surah.title, number: surah.number)
-                    }
+                ScrollView {
+                    ForEach(surahVM.surah){ surah in
+                        NavigationLink {
+                            DetailSurahView(surahNumber: surah.nomor)
+                        } label: {
+                            SurahComponent(name: surah.namaLatin, number: surah.nomor, place: surah.tempatTurun, verses: surah.nomor, nameInArab: surah.nama)
+                                .padding(.vertical)
+                        }
 
-                    
+                        
+                    }
                 }
-                Spacer()
+                .onAppear{
+                    Task {
+                        do {
+                            try await surahVM.getSurah()
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
             }
-            
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(CustomColor.DarkPurple)
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

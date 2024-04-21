@@ -16,13 +16,13 @@ struct AyahsComponent: View {
             HStack{
                 ZStack{
                     Circle()
-                        .frame(width: 27)
+                        .frame(width: 32)
                         .foregroundColor(CustomColor.BasicPurple)
                     Text("\(number)")
+                        .font(.system(size: 12))
                         .fontWeight(.bold)
                 }
                 Spacer()
-                Image(systemName: "bookmark")
             }
             .padding(.vertical,10)
             .padding(.horizontal,13)
@@ -32,6 +32,7 @@ struct AyahsComponent: View {
             
             VStack(alignment:.trailing, spacing: 16){
                 Text(surah)
+                    .font(.system(size: 22))
                     .foregroundColor(CustomColor.BasicPurple)
                     .bold()
                 Text(surahInIndo)

@@ -10,8 +10,16 @@ import SwiftUI
 struct DetailSurahView: View {
     @State var surahNumber: Int
     @ObservedObject var surahVM = SurahViewModel()
+    @State var surahName: String
     var body: some View {
         VStack{
+            HStack{
+                Text("\(surahName)")
+                    .fontWeight(.heavy)
+                    .font(.system(size: 20))
+            }
+            .frame(width: 327)
+            .foregroundColor(.white)
             ScrollView {
                 ForEach(surahVM.detailSurah){item in
                     AyahsComponent(number: "\(item.id)", surah: item.ar, surahInIndo: item.idn)
@@ -37,6 +45,6 @@ struct DetailSurahView: View {
 
 struct DetailSurahView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailSurahView(surahNumber: 4)
+        DetailSurahView(surahNumber: 4, surahName: "Al-Fatihah")
     }
 }

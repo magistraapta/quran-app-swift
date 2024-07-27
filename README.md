@@ -13,4 +13,4 @@ git clone https://github.com/magistraapta/quran-app-swift
 - Swift 5.5
 - Xcode 14
 ## Image
-[app-screenshot1](https://github.com/user-attachments/assets/3c1fe08a-cd1f-4045-a4e2-c359270c1ebe)
+![app-screenshot1](https://github.com/user-attachments/assets/3c1fe08a-cd1f-4045-a4e2-c359270c1ebe)
